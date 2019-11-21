@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="475dp">
+
+    <TextView
+        android:id="@+id/gymName"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Gym Title"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymBadge"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="250dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toTopOf="@id/gymName"
+        app:layout_constraintBottom_toBottomOf="@id/gymName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymTile1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_radio_button_unchecked_black_24dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/gymName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymTile1Lock"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/ic_lock_outline_black_24dp"
+        app:layout_constraintTop_toTopOf="@id/gymTile1"
+        app:layout_constraintBottom_toBottomOf="@id/gymTile1"
+        app:layout_constraintStart_toStartOf="@id/gymTile1"
+        app:layout_constraintEnd_toEndOf="@id/gymTile1"/>
+
+    <ImageView
+        android:id="@+id/gymTile2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_radio_button_unchecked_black_24dp"
+        android:layout_marginTop="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/gymTile1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymTile2Lock"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/ic_lock_outline_black_24dp"
+        app:layout_constraintTop_toTopOf="@id/gymTile2"
+        app:layout_constraintBottom_toBottomOf="@id/gymTile2"
+        app:layout_constraintStart_toStartOf="@id/gymTile2"
+        app:layout_constraintEnd_toEndOf="@id/gymTile2"/>
+
+    <ImageView
+        android:id="@+id/gymTile3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_radio_button_unchecked_black_24dp"
+        android:layout_marginTop="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/gymTile2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymTile3Lock"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/ic_lock_outline_black_24dp"
+        app:layout_constraintTop_toTopOf="@id/gymTile3"
+        app:layout_constraintBottom_toBottomOf="@id/gymTile3"
+        app:layout_constraintStart_toStartOf="@id/gymTile3"
+        app:layout_constraintEnd_toEndOf="@id/gymTile3"/>
+
+    <ImageView
+        android:id="@+id/gymTile4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_radio_button_unchecked_black_24dp"
+        android:layout_marginTop="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/gymTile3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymTile4Lock"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/ic_lock_outline_black_24dp"
+        app:layout_constraintTop_toTopOf="@id/gymTile4"
+        app:layout_constraintBottom_toBottomOf="@id/gymTile4"
+        app:layout_constraintStart_toStartOf="@id/gymTile4"
+        app:layout_constraintEnd_toEndOf="@id/gymTile4"/>
+
+    <ImageView
+        android:id="@+id/gymTile5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_radio_button_unchecked_black_24dp"
+        android:layout_marginTop="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        app:layout_constraintTop_toBottomOf="@id/gymTile4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/gymTile5Lock"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/ic_lock_outline_black_24dp"
+        app:layout_constraintTop_toTopOf="@id/gymTile5"
+        app:layout_constraintBottom_toBottomOf="@id/gymTile5"
+        app:layout_constraintStart_toStartOf="@id/gymTile5"
+        app:layout_constraintEnd_toEndOf="@id/gymTile5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

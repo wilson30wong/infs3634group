@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.QuizInProgressActivity">
+
+    <TextView
+        android:id="@+id/quizHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gym Name \nStage"
+        android:textSize="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/quizHeader1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Question Number \nQuestion"
+        android:textSize="18dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/quizHeader"
+        app:layout_constraintStart_toStartOf="@id/quizHeader"/>
+
+    <Button
+        android:id="@+id/quizOptionA"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="16dp"
+        android:text="A."
+        android:background="#ADD8E6"
+        tools:background="#ADD8E6"
+        app:layout_constraintTop_toBottomOf="@id/quizHeader1"
+        app:layout_constraintStart_toStartOf="@id/quizHeader1"/>
+
+    <Button
+        android:id="@+id/quizOptionB"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginEnd="16dp"
+        android:text="B."
+        android:background="#90EE90"
+        tools:background="#90EE90"
+        app:layout_constraintTop_toTopOf="@id/quizOptionA"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/quizOptionC"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="16dp"
+        android:text="C."
+        android:background="#FFA07A"
+        tools:background="#FFA07A"
+        app:layout_constraintTop_toBottomOf="@id/quizOptionA"
+        app:layout_constraintStart_toStartOf="@id/quizOptionA"/>
+
+    <Button
+        android:id="@+id/quizOptionD"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginEnd="16dp"
+        android:text="D."
+        android:background="#FFFFE0"
+        tools:background="#FFFFE0"
+        app:layout_constraintTop_toTopOf="@id/quizOptionC"
+        app:layout_constraintEnd_toEndOf="@id/quizHeader1"/>
+
+    <TextView
+        android:id="@+id/correctStatus"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="You answered correctly!"
+        android:textSize="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/quizOptionC"
+        app:layout_constraintStart_toStartOf="@id/quizOptionC" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nextQuestion"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/correctStatus"
+        app:layout_constraintEnd_toEndOf="@id/quizOptionD">
+
+        <TextView
+            android:id="@+id/nextQuestion1"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:text="Next Question"
+            android:textSize="18dp"
+            android:gravity="center_vertical|end"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_arrow_forward_black_24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
