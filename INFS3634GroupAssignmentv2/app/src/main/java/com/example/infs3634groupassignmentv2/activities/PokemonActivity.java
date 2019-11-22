@@ -11,24 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.example.infs3634groupassignmentv2.MainActivity;
 import com.example.infs3634groupassignmentv2.R;
-import com.example.infs3634groupassignmentv2.adapters.PokemonAdapter;
 import com.example.infs3634groupassignmentv2.api.Pokemon;
-import com.example.infs3634groupassignmentv2.api.PokemonSpecies;
-import com.example.infs3634groupassignmentv2.fragments.HomeFragment;
 import com.example.infs3634groupassignmentv2.fragments.PokemonFlashCardsFragment;
 import com.example.infs3634groupassignmentv2.fragments.PokemonInfoFragment;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 public class PokemonActivity extends AppCompatActivity {
 
@@ -39,7 +26,6 @@ public class PokemonActivity extends AppCompatActivity {
     ConstraintLayout pokemonHeader1;
     Button infoButton;
     Button flashCardsButton;
-    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +49,6 @@ public class PokemonActivity extends AppCompatActivity {
         String name = pokemonObject.getName();
         name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
         pokemonName1.setText(name);
-
         Glide.with(getApplicationContext()).load(pokemonObject.getSprites().getFront_default()).into(pokemonImage1);
 
         infoButton.setOnClickListener(new View.OnClickListener(){
@@ -80,9 +65,6 @@ public class PokemonActivity extends AppCompatActivity {
 
             }
         });
-
-        System.out.println(MainActivity.profile.getFlashCardArrayList().size());
-
     }
 
     public Pokemon getPokemonObject() {

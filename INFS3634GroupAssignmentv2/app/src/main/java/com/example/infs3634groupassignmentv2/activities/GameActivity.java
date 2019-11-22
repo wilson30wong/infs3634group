@@ -2,7 +2,6 @@ package com.example.infs3634groupassignmentv2.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,14 +13,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.infs3634groupassignmentv2.MainActivity;
 import com.example.infs3634groupassignmentv2.R;
-import com.example.infs3634groupassignmentv2.api.Pokemon;
-import com.example.infs3634groupassignmentv2.api.PokemonSpecies;
 import com.example.infs3634groupassignmentv2.model.Game;
 import com.example.infs3634groupassignmentv2.model.Gym;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -30,7 +23,6 @@ public class GameActivity extends AppCompatActivity {
     Button previousGymButton;
     Button nextGymButton;
     ConstraintLayout currentGym;
-    ConstraintLayout currentGymHolder;
     Game game;
     Gym gym;
     int viewableGym;
@@ -47,9 +39,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView gymTile3Lock;
     ImageView gymTile4Lock;
     ImageView gymTile5Lock;
-    int gymCounter = 0;
-    int quizCounter = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,35 +49,7 @@ public class GameActivity extends AppCompatActivity {
         startQuizButton = findViewById(R.id.startQuizButton);
         previousGymButton = findViewById(R.id.previousGymButton);
         nextGymButton = findViewById(R.id.nextGymButton);
-//        currentGymHolder = findViewById(R.id.currentGymHolder);
         currentGym = findViewById(R.id.currentGym);
-
-//        if(MainActivity.profile.getGame().getGymArrayList().get(0).getQuizArrayList().get(0).getPokemonArrayList().size() == 0){
-//            ArrayList<Integer> randomPokemonIdArrayList = new ArrayList<>(807);
-//            for (int i = 0; i < 807; i++){
-//                int id = i + 1;
-//                randomPokemonIdArrayList.add(id);
-//            }
-//            Collections.shuffle(randomPokemonIdArrayList);
-//            List<Integer> randomPokemonIdList = randomPokemonIdArrayList.subList(0,175);
-//            ArrayList<Integer> randomPokemonIdArrayList1 = new ArrayList<Integer>(randomPokemonIdList);
-//
-//            for(int i = 0; i < 175; ++i){
-//                if(i != 0 && i % 5 == 0 && i != 174){
-//                    quizCounter++;
-//                }
-//                if(i != 0 && i % 25 == 0 && i != 174){
-//                    quizCounter = 0;
-//                    gymCounter++;
-//                }
-//
-//                Pokemon pokemonObject = MainActivity.pokemonArrayList.get(i);
-//                PokemonSpecies pokemonSpeciesObject = MainActivity.pokemonSpeciesArrayList.get(i);
-//                pokemonObject.setSpecies(pokemonSpeciesObject);
-//                System.out.println(i);
-//                MainActivity.profile.getGame().getGymArrayList().get(gymCounter).getQuizArrayList().get(quizCounter).getPokemonArrayList().add(pokemonObject);
-//            }
-//        }
 
         game = MainActivity.profile.getGame();
         gym = MainActivity.profile.getGame().getGymArrayList().get(game.getGameProgress());
@@ -126,7 +87,6 @@ public class GameActivity extends AppCompatActivity {
                 gym = MainActivity.profile.getGame().getGymArrayList().get(viewableGym - 1);
                 viewableGym--;
                 gymName.setText(gym.getName());
-                System.out.println(gym.getGymProgress() + " is the gym progress");
                 if(gym.getGymProgress() == 5){
                     gymBadge.setImageResource(gym.getBadge());
                 } else{
@@ -156,21 +116,6 @@ public class GameActivity extends AppCompatActivity {
         startQuizButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-//                Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-//                intent.putExtra("selectedGym", viewableGym);
-//                intent.putExtra("selectedQuiz", selectedQuiz);
-//                startActivity(intent);
-//
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-//                        intent.putExtra("selectedGym", viewableGym);
-//                        intent.putExtra("selectedQuiz", selectedQuiz);
-//                        startActivity(intent);
-//                        finish();
-//                    }
-//                },10000);
                 if(MainActivity.profile.getGame().getGymArrayList().get(viewableGym).getQuizArrayList().get(selectedQuiz).getPokemonArrayList().get(0).checkIfHeightExists()){
                     Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
                     intent.putExtra("selectedGym", viewableGym);
@@ -182,9 +127,6 @@ public class GameActivity extends AppCompatActivity {
                     intent.putExtra("selectedQuiz", selectedQuiz);
                     startActivity(intent);
                 }
-
-
-
             }
         });
 

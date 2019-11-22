@@ -5,24 +5,19 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.infs3634groupassignmentv2.MainActivity;
 import com.example.infs3634groupassignmentv2.R;
 import com.example.infs3634groupassignmentv2.activities.FlashCardActivity;
 import com.example.infs3634groupassignmentv2.activities.PokemonActivity;
-import com.example.infs3634groupassignmentv2.api.Pokemon;
 import com.example.infs3634groupassignmentv2.fragments.PokemonInfoFragment;
 import com.example.infs3634groupassignmentv2.model.FlashCard;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class FlashCardAdapter extends RecyclerView.Adapter<FlashCardAdapter.FlashCardViewHolder> {
 

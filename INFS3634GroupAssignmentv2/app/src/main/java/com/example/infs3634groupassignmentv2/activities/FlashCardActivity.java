@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -41,7 +40,6 @@ public class FlashCardActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
         pokemonObject = (Pokemon) intent.getSerializableExtra("pokemonObject");
-        System.out.println(pokemonObject.getName());
 
         for(int i = 0; i < MainActivity.profile.getFlashCardArrayList().size(); i++){
             if(id == MainActivity.profile.getFlashCardArrayList().get(i).getId()){
@@ -71,17 +69,12 @@ public class FlashCardActivity extends AppCompatActivity {
                 if(flashCardTitle1.getText().toString().trim().length() == 0 && id > 0){
                     Toast.makeText(getApplicationContext(), "Flash Cards Require Titles", Toast.LENGTH_LONG).show();
                 } else {
+                    Toast.makeText(getApplicationContext(), "Flash Card Has Been Saved", Toast.LENGTH_SHORT).show();
                     MainActivity.profile.getFlashCardArrayList().remove(flashCardObject);
                     flashCardObject = new FlashCard(id, flashCardTitle1.getText().toString(), flashCardBody1.getText().toString(),pokemonObject);;
                     MainActivity.profile.getFlashCardArrayList().add(flashCardObject);
-                    Toast.makeText(getApplicationContext(), "Flash Card Has Been Saved", Toast.LENGTH_SHORT).show();
-                    System.out.println(MainActivity.profile.findFlashCards(MainActivity.profile.getFlashCardArrayList(),pokemonObject.getName()).size());
                     saveButton.setImageResource(R.drawable.ic_save_black_24dp);
                 }
-//                else{
-//                    flashCardObject = new FlashCard(id, flashCardTitle1.getText().toString(), flashCardBody1.getText().toString(),pokemonObject);
-//                    MainActivity.profile.getFlashCardArrayList().add(flashCardObject);
-//                }
             }
         });
 

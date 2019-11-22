@@ -60,20 +60,13 @@ public class QuizInProgressActivity extends AppCompatActivity {
         gym = MainActivity.profile.getGame().getGymArrayList().get(selectedGym);
         quiz = MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getQuizArrayList().get(selectedQuiz);
 
-        System.out.println(selectedGym + "       " + selectedQuiz);
-        System.out.println(MainActivity.profile.getGame().getGameProgress() + "           " + MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getGymProgress());
-
         populatePage();
+        cheatEngine();
 
         if(MainActivity.profile.getGame().getGameProgress() == selectedGym){
             if(MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getGymProgress() == selectedQuiz){
                 progress = true;
-                System.out.println(progress + " this is a progressable gym");
             }
-        }
-
-        for(int i = 0; i < 5; i++){
-            System.out.println(quiz.getQuestionArrayList().get(i).getAnswerCode());
         }
 
         nextQuestion.setOnClickListener(new View.OnClickListener(){
@@ -81,7 +74,6 @@ public class QuizInProgressActivity extends AppCompatActivity {
             public void onClick(View v){
                 if(nextQuestion1.getText().equals("Finish the Quiz")){
                     Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-                    System.out.println(progress + " is the progress");
                     if(correctAnswers == 5 & progress == true){
                         int newProgress = MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getGymProgress() + 1;
                         MainActivity.profile.getGame().getGymArrayList().get(selectedGym).setGymProgress(newProgress);
@@ -259,6 +251,13 @@ public class QuizInProgressActivity extends AppCompatActivity {
                 quizCorrectAnswers.setText(correctAnswers + "/5");
             }
         });
+    }
+
+    public void cheatEngine(){
+        for(int i = 0; i < 5; i++){
+            String answers = quiz.getQuestionArrayList().get(i).getAnswerCode();
+            System.out.println(answers);
+        }
     }
 
 }

@@ -2,27 +2,17 @@ package com.example.infs3634groupassignmentv2.fragments;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
+import androidx.fragment.app.Fragment;
+
 import com.example.infs3634groupassignmentv2.R;
 import com.example.infs3634groupassignmentv2.activities.PokemonActivity;
 import com.example.infs3634groupassignmentv2.api.Pokemon;
-import com.google.gson.Gson;
 
 public class PokemonInfoFragment extends Fragment {
 
@@ -48,7 +38,6 @@ public class PokemonInfoFragment extends Fragment {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_pokemon_info, container, false);
 
         pokemonObject = ((PokemonActivity)getActivity()).getPokemonObject();
-
 
         pokemonHeight = frameLayout.findViewById(R.id.pokemonHeight);
         pokemonWeight = frameLayout.findViewById(R.id.pokemonWeight);

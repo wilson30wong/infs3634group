@@ -1,10 +1,6 @@
 package com.example.infs3634groupassignmentv2.model;
 
-import com.example.infs3634groupassignmentv2.api.Genera;
-import com.example.infs3634groupassignmentv2.api.Pokemon;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Profile {

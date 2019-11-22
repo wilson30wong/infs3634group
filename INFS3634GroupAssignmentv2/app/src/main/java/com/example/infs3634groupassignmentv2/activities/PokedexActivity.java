@@ -37,8 +37,8 @@ public class PokedexActivity extends AppCompatActivity {
     Pokemon selectedPokemonObject;
     ProgressBar loadingCircle1;
     TextView searchLoadingText;
-    int gymCounter = 0;
-    int quizCounter = 0;
+
+    ArrayList<Pokemon> pokemonArrayList = new ArrayList<Pokemon>();
 
 
     @Override
@@ -60,33 +60,6 @@ public class PokedexActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
-//        if(MainActivity.profile.getPokemonArrayList().size() == 0){
-//            for(int i = 0; i < 807; i++){
-//                Pokemon pokemonObject = MainActivity.pokemonArrayList.get(i);
-//                PokemonSpecies pokemonSpeciesObject = MainActivity.pokemonSpeciesArrayList.get(i);
-//                pokemonObject.setSpecies(pokemonSpeciesObject);
-//                MainActivity.profile.getPokemonArrayList().add(pokemonObject);
-//            }
-//        }
-
-//        searchButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                InputMethodManager inputMethodManager = (InputMethodManager) v.getContext().
-//                        getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
-//                inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
-//
-//                String searchQuery = searchBar.getText().toString().toLowerCase().trim();
-//                System.out.println(searchQuery + "is the search");
-//                Pokemon pokemonObject = MainActivity.profile.findPokemon(MainActivity.profile.getPokemonArrayList(), searchQuery);
-//                ArrayList<Pokemon> pokemonArrayList = new ArrayList<Pokemon>();
-//                PokemonAdapter pokemonAdapter = new PokemonAdapter();
-//                pokemonArrayList.add(pokemonObject);
-//                pokemonAdapter.setData(pokemonArrayList);
-//                recyclerView.setAdapter(pokemonAdapter);
-//            }
-//        });
-
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,16 +71,13 @@ public class PokedexActivity extends AppCompatActivity {
                 searchLoadingText.setVisibility(View.VISIBLE);
 
                 String searchQuery = searchBar.getText().toString().toLowerCase().trim();
-                System.out.println(searchQuery + "is the search");
-
                 String url = "https://pokeapi.co/api/v2/pokemon/" + searchQuery + "/";
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
-//                        selectedPokemonObject = gson.fromJson(response, Pokemon.class);
-                        final Pokemon pokemonObject = gson.fromJson(response, Pokemon.class);
-
+                        Pokemon pokemonObject = gson.fromJson(response, Pokemon.class);
+                        pokemonArrayList.add(pokemonObject);
                         String url1 = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonObject.getName() + "/";
                         Response.Listener<String> responseListener1 = new Response.Listener<String>() {
                             @Override
@@ -115,9 +85,7 @@ public class PokedexActivity extends AppCompatActivity {
                                 PokemonAdapter pokemonAdapter = new PokemonAdapter();
                                 Gson gson = new Gson();
                                 PokemonSpecies pokemonSpecies = gson.fromJson(response,PokemonSpecies.class);
-                                pokemonObject.setSpecies(pokemonSpecies);
-                                ArrayList<Pokemon> pokemonArrayList = new ArrayList<Pokemon>();
-                                pokemonArrayList.add(pokemonObject);
+                                pokemonArrayList.get(0).setSpecies(pokemonSpecies);
                                 pokemonAdapter.setData(pokemonArrayList);
                                 loadingCircle1.setVisibility(View.GONE);
                                 searchLoadingText.setVisibility(View.GONE);
@@ -156,23 +124,6 @@ public class PokedexActivity extends AppCompatActivity {
                 };
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener, errorListener);
                 requestQueue.add(stringRequest);
-
-//                String url1 = "https://pokeapi.co/api/v2/pokemon-species/" + searchQuery + "/";
-//                Response.Listener<String> responseListener1 = new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        PokemonAdapter pokemonAdapter = new PokemonAdapter();
-//                        Gson gson = new Gson();
-//                        PokemonSpecies pokemonSpecies = gson.fromJson(response,PokemonSpecies.class);
-//                        selectedPokemonObject.setSpecies(pokemonSpecies);
-//                        ArrayList<Pokemon> pokemonArrayList = new ArrayList<Pokemon>();
-//                        pokemonArrayList.add(selectedPokemonObject);
-//                        pokemonAdapter.setData(pokemonArrayList);
-//                        recyclerView.setAdapter(pokemonAdapter);
-//                    }
-//                };
-//                StringRequest stringRequest1 = new StringRequest(Request.Method.GET, url1, responseListener1, errorListener);
-//                requestQueue.add(stringRequest1);
             }
         });
 
@@ -188,16 +139,13 @@ public class PokedexActivity extends AppCompatActivity {
                     searchLoadingText.setVisibility(View.VISIBLE);
 
                     String searchQuery = searchBar.getText().toString().toLowerCase().trim();
-                    System.out.println(searchQuery + "is the search");
-
                     String url = "https://pokeapi.co/api/v2/pokemon/" + searchQuery + "/";
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Gson gson = new Gson();
-//                        selectedPokemonObject = gson.fromJson(response, Pokemon.class);
-                            final Pokemon pokemonObject = gson.fromJson(response, Pokemon.class);
-
+                            Pokemon pokemonObject = gson.fromJson(response, Pokemon.class);
+                            pokemonArrayList.add(pokemonObject);
                             String url1 = "https://pokeapi.co/api/v2/pokemon-species/" + pokemonObject.getName() + "/";
                             Response.Listener<String> responseListener1 = new Response.Listener<String>() {
                                 @Override
@@ -205,9 +153,7 @@ public class PokedexActivity extends AppCompatActivity {
                                     PokemonAdapter pokemonAdapter = new PokemonAdapter();
                                     Gson gson = new Gson();
                                     PokemonSpecies pokemonSpecies = gson.fromJson(response,PokemonSpecies.class);
-                                    pokemonObject.setSpecies(pokemonSpecies);
-                                    ArrayList<Pokemon> pokemonArrayList = new ArrayList<Pokemon>();
-                                    pokemonArrayList.add(pokemonObject);
+                                    pokemonArrayList.get(0).setSpecies(pokemonSpecies);
                                     pokemonAdapter.setData(pokemonArrayList);
                                     loadingCircle1.setVisibility(View.GONE);
                                     searchLoadingText.setVisibility(View.GONE);
@@ -251,6 +197,5 @@ public class PokedexActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 }
