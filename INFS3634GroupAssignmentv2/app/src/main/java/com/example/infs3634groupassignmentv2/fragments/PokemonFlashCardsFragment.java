@@ -52,7 +52,6 @@ public class PokemonFlashCardsFragment extends Fragment {
     public void onStart(){
         super.onStart();
         flashCardArrayList = MainActivity.profile.findFlashCards(MainActivity.profile.getFlashCardArrayList(),((PokemonActivity)getActivity()).getPokemonObject().getName());
-        System.out.println(flashCardArrayList.size());
         FlashCardAdapter flashCardAdapter = new FlashCardAdapter();
         flashCardAdapter.setData(flashCardArrayList);
         recyclerView.setAdapter(flashCardAdapter);
