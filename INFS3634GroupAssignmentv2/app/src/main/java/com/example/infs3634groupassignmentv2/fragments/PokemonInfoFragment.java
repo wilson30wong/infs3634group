@@ -98,34 +98,39 @@ public class PokemonInfoFragment extends Fragment {
         pokemonGenus.setText("Genus: \n" + genus);
         String shape = "";
         shape = pokemonObject.getSpecies().getShape().getName();
-        shape = shape.substring(0,1).toUpperCase() + shape.substring(1).toLowerCase();
+        shape = shape.substring(0, 1).toUpperCase() + shape.substring(1).toLowerCase();
         pokemonShape.setText("Shape: \n" + shape);
         String generation = "";
-        if (pokemonObject.getSpecies().getGeneration() != null){
-            generation = pokemonObject.getSpecies().getGeneration().getName();
-            switch(generation){
-                case "generation-i":{
-                    generation = "I";
-                } break;
-                case "generation-ii":{
-                    generation = "II";
-                } break;
-                case "generation-iii":{
-                    generation = "III";
-                } break;
-                case "generation-iv":{
-                    generation = "IV";
-                } break;
-                case "generation-v":{
-                    generation = "V";
-                } break;
-                case "generation-vi":{
-                    generation = "VI";
-                } break;
-                case "generation-vii":{
-                    generation = "VII";
-                } break;
+        generation = pokemonObject.getSpecies().getGeneration().getName();
+        switch (generation) {
+            case "generation-i": {
+                generation = "I";
             }
+            break;
+            case "generation-ii": {
+                generation = "II";
+            }
+            break;
+            case "generation-iii": {
+                generation = "III";
+            }
+            break;
+            case "generation-iv": {
+                generation = "IV";
+            }
+            break;
+            case "generation-v": {
+                generation = "V";
+            }
+            break;
+            case "generation-vi": {
+                generation = "VI";
+            }
+            break;
+            case "generation-vii": {
+                generation = "VII";
+            }
+            break;
         }
         pokemonGeneration.setText("Generation: " + generation);
 

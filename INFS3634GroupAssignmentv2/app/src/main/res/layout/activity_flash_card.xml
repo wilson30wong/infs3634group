@@ -54,8 +54,8 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_margin = "32dp"
-        android:background="#B0E0E6"
-        tools:background="#B0E0E6"
+        android:background="@drawable/layout_circle_buttons"
+        tools:background="@drawable/layout_circle_buttons"
         android:src="@drawable/ic_add_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

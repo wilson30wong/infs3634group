@@ -159,7 +159,6 @@ public class PokedexActivity extends AppCompatActivity {
                                     loadingCircle1.setVisibility(View.GONE);
                                     searchLoadingText.setVisibility(View.GONE);
                                     recyclerView.setAdapter(pokemonAdapter);
-                                    pokemonArrayList.clear();
                                 }
                             };
                             Response.ErrorListener errorListener1 = new Response.ErrorListener() {
@@ -173,7 +172,6 @@ public class PokedexActivity extends AppCompatActivity {
                                     loadingCircle1.setVisibility(View.GONE);
                                     searchLoadingText.setVisibility(View.GONE);
                                     recyclerView.setAdapter(pokemonAdapter);
-                                    pokemonArrayList.clear();
                                 }
                             };
                             StringRequest stringRequest1 = new StringRequest(Request.Method.GET, url1, responseListener1, errorListener1);
@@ -191,7 +189,6 @@ public class PokedexActivity extends AppCompatActivity {
                             loadingCircle1.setVisibility(View.GONE);
                             searchLoadingText.setVisibility(View.GONE);
                             recyclerView.setAdapter(pokemonAdapter);
-                            pokemonArrayList.clear();
                         }
                     };
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, url, responseListener, errorListener);

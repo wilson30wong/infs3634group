@@ -27,8 +27,8 @@
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
         android:src="@drawable/ic_search_black_24dp"
-        android:background="#B0E0E6"
-        tools:background="#B0E0E6"
+        android:background="@drawable/layout_circle_buttons"
+        tools:background="@drawable/layout_circle_buttons"
         tools:src="@tools:sample/avatars"
         app:layout_constraintTop_toTopOf="@id/searchBar"
         app:layout_constraintStart_toEndOf="@id/searchBar"/>

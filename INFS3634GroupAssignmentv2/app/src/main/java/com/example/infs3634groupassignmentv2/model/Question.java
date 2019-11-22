@@ -41,8 +41,98 @@ public class Question {
                 this.answerCode = getRandomAnswerCode();
                 this.wrongAnswers = getWrongTypeAnswers(pokemon);
             } break;
-
+            case "generation":{
+                this.question = "When did " + name + " first appear?";
+                String generation = pokemon.getSpecies().getGeneration().getName();
+                switch (generation) {
+                    case "generation-i": {
+                        generation = "I";
+                    }
+                    break;
+                    case "generation-ii": {
+                        generation = "II";
+                    }
+                    break;
+                    case "generation-iii": {
+                        generation = "III";
+                    }
+                    break;
+                    case "generation-iv": {
+                        generation = "IV";
+                    }
+                    break;
+                    case "generation-v": {
+                        generation = "V";
+                    }
+                    break;
+                    case "generation-vi": {
+                        generation = "VI";
+                    }
+                    break;
+                    case "generation-vii": {
+                        generation = "VII";
+                    }
+                    break;
+                }
+                this.answer = "Generation " + generation;
+                this.answerCode = getRandomAnswerCode();
+                this.wrongAnswers = getWrongGenerationAnswers(pokemon);
+            } break;
+            case "speed":{
+                this.question = "What is " + name + "'s speed?";
+                this.answer = Integer.toString(pokemon.getStats().get(0).getBase_stat());
+                this.answerCode = getRandomAnswerCode();
+                this.wrongAnswers = getWrongSpeedAnswers(pokemon);
+            } break;
         }
+    }
+
+    public String getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(String questionType) {
+        this.questionType = questionType;
+    }
+
+    public Pokemon getPokemon() {
+        return pokemon;
+    }
+
+    public void setPokemon(Pokemon pokemon) {
+        this.pokemon = pokemon;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public String getAnswerCode() {
+        return answerCode;
+    }
+
+    public void setAnswerCode(String answerCode) {
+        this.answerCode = answerCode;
+    }
+
+    public ArrayList<String> getWrongAnswers() {
+        return wrongAnswers;
+    }
+
+    public void setWrongAnswers(ArrayList<String> wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
     }
 
     private int getRandom(int min, int max){
@@ -229,51 +319,90 @@ public class Question {
         return wrongAnswers;
     }
 
-    public String getQuestionType() {
-        return questionType;
-    }
+    private ArrayList<String> getWrongGenerationAnswers(Pokemon pokemon){
+        ArrayList<String> wrongAnswers = new ArrayList<String>();
+        String wrongAnswer = "";
+        for(int i = 0; i < 3; i++){
+            int random = getRandom(1,7);
+            switch (random){
+                case 1:{
+                    wrongAnswer = "generation-i";
+                } break;
+                case 2:{
+                    wrongAnswer = "generation-ii";
+                } break;
+                case 3:{
+                    wrongAnswer = "generation-iii";
+                } break;
+                case 4:{
+                    wrongAnswer = "generation-iv";
+                } break;
+                case 5:{
+                    wrongAnswer = "generation-v";
+                } break;
+                case 6:{
+                    wrongAnswer = "generation-vi";
+                } break;
+                case 7:{
+                    wrongAnswer = "generation-vii";
+                } break;
+            }
 
-    public void setQuestionType(String questionType) {
-        this.questionType = questionType;
-    }
-
-    public Pokemon getPokemon() {
-        return pokemon;
-    }
-
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon = pokemon;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public String getAnswerCode() {
-        return answerCode;
-    }
-
-    public void setAnswerCode(String answerCode) {
-        this.answerCode = answerCode;
-    }
-
-    public ArrayList<String> getWrongAnswers() {
+            if(wrongAnswer.equals(pokemon.getSpecies().getGeneration().getName())){
+                i--;
+                continue;
+            }
+            wrongAnswer = wrongAnswer.replace("-", " ");
+            wrongAnswer = wrongAnswer.substring(0,1).toUpperCase() + wrongAnswer.substring(1).toLowerCase();
+            if (i == 0) {
+                wrongAnswers.add(wrongAnswer);
+            } else{
+                boolean nonDuplicate = true;
+                for(int j = 0; j < wrongAnswers.size(); j++){
+                    if(wrongAnswer.equals(wrongAnswers.get(j))){
+                        i--;
+                        nonDuplicate = false;
+                        break;
+                    } else{
+                        nonDuplicate = true;
+                    }
+                }
+                if(nonDuplicate == true){
+                    wrongAnswers.add(wrongAnswer);
+                }
+            }
+        }
         return wrongAnswers;
     }
 
-    public void setWrongAnswers(ArrayList<String> wrongAnswers) {
-        this.wrongAnswers = wrongAnswers;
+    private ArrayList<String> getWrongSpeedAnswers(Pokemon pokemon){
+        ArrayList<String> wrongAnswers = new ArrayList<String>();
+        for(int i = 0; i < 3; i++){
+            int random = getRandom((pokemon.getStats().get(0).getBase_stat()/2), (pokemon.getStats().get(0).getBase_stat() + (pokemon.getStats().get(0).getBase_stat()/2)));
+            if(random == pokemon.getStats().get(0).getBase_stat()){
+                i--;
+                continue;
+            }
+            String wrongAnswer = Integer.toString(random);
+            if (i == 0) {
+                wrongAnswers.add(wrongAnswer);
+            } else{
+                boolean nonDuplicate = true;
+                for(int j = 0; j < wrongAnswers.size(); j++){
+                    if(wrongAnswer.equals(wrongAnswers.get(j))){
+                        i--;
+                        nonDuplicate = false;
+                        break;
+                    } else{
+                        nonDuplicate = true;
+                    }
+                }
+                if(nonDuplicate == true){
+                    wrongAnswers.add(wrongAnswer);
+                }
+            }
+        }
+        return wrongAnswers;
     }
+
 }

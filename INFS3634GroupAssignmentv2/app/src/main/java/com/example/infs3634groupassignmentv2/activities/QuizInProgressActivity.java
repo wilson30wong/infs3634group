@@ -61,7 +61,6 @@ public class QuizInProgressActivity extends AppCompatActivity {
         quiz = MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getQuizArrayList().get(selectedQuiz);
 
         populatePage();
-        cheatEngine();
 
         if(MainActivity.profile.getGame().getGameProgress() == selectedGym){
             if(MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getGymProgress() == selectedQuiz){
