@@ -1,6 +1,8 @@
 package com.example.infs3634groupassignmentv2.api;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
@@ -9,17 +11,26 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 public class Pokemon implements Serializable {
 
     private int id;
+    @PrimaryKey
+    @NonNull
     private String name;
-    private PokemonSprites sprites = null;
-    private int height;
+    private String url;
+    @Ignore
+    private PokemonSprites sprites;
+    private int height = 0;
     private int weight;
+    @Ignore
     private List<PokemonType> types;
+    @Ignore
     private List<PokemonAbility> abilities;
+    @Ignore
     private List<PokemonStat> stats;
-    private PokemonSpecies species = null;
+    @Ignore
+    private PokemonSpecies species;
 
     public Pokemon(){
         this.name = "No Pokemon Found";
@@ -39,6 +50,14 @@ public class Pokemon implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public PokemonSprites getSprites() {
@@ -97,7 +116,14 @@ public class Pokemon implements Serializable {
         this.species = species;
     }
 
-    public boolean checkIfSpeciesExist(){
+    public boolean checkIfHeightExists(){
+        if(this.height == 0){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkIfSpeciesExists(){
         if(this.species == null){
             return false;
         }

@@ -11,6 +11,7 @@
         android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="69dp"
         android:ems="10"
@@ -24,8 +25,10 @@
         android:id="@+id/searchButton"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/ic_search_black_24dp"
+        android:background="#B0E0E6"
+        tools:background="#B0E0E6"
         tools:src="@tools:sample/avatars"
         app:layout_constraintTop_toTopOf="@id/searchBar"
         app:layout_constraintStart_toEndOf="@id/searchBar"/>
@@ -35,8 +38,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="61dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loadingCircle1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:indeterminate="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/searchLoadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Finding Pokemon..."
+        android:textStyle="italic"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loadingCircle1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,9 +18,11 @@ import com.example.infs3634groupassignmentv2.R;
 import com.example.infs3634groupassignmentv2.activities.FlashCardActivity;
 import com.example.infs3634groupassignmentv2.activities.PokemonActivity;
 import com.example.infs3634groupassignmentv2.api.Pokemon;
+import com.example.infs3634groupassignmentv2.fragments.PokemonInfoFragment;
 import com.example.infs3634groupassignmentv2.model.FlashCard;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class FlashCardAdapter extends RecyclerView.Adapter<FlashCardAdapter.FlashCardViewHolder> {
 
@@ -38,22 +41,25 @@ public class FlashCardAdapter extends RecyclerView.Adapter<FlashCardAdapter.Flas
 
         if(position == 0){
             holder.flashCardTitle.setText("Make A New Flashcard");
-            holder.flashCardBody.setText("Press Here to Make A New Flashcard");
-            holder.view.setOnClickListener(new View.OnClickListener() {
+            holder.flashCardBody.setText("Press Here to Make\nA New Flashcard");
+            holder.flashCardBody.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, FlashCardActivity.class);
-                    intent.putExtra("id", MainActivity.profile.getFlashCardArrayList().size());
+                    intent.putExtra("pokemonObject", (PokemonInfoFragment.pokemonObject));
+                    MainActivity.profile.setNotesCreated(MainActivity.profile.getNotesCreated() + 1);
+                    intent.putExtra("id", MainActivity.profile.getNotesCreated());
                     context.startActivity(intent);
                 }
             });
         } else{
             holder.flashCardTitle.setText(flashCardObject.getTitle());
             holder.flashCardBody.setText(flashCardObject.getBody());
-            holder.view.setOnClickListener(new View.OnClickListener() {
+            holder.flashCardBody.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, FlashCardActivity.class);
+                    intent.putExtra("pokemonObject", (PokemonInfoFragment.pokemonObject));
                     intent.putExtra("id", flashCardObject.getId());
                     context.startActivity(intent);
                 }

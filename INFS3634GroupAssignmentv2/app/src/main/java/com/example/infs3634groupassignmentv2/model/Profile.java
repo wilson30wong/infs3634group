@@ -12,17 +12,15 @@ public class Profile {
     private UUID uuid;
     private Game game;
     private ArrayList<FlashCard> flashCardArrayList;
-    private ArrayList<Pokemon> pokemonArrayList;
+    private int notesCreated;
 
     public Profile(){
         this.uuid = java.util.UUID.randomUUID();
         this.game = new Game();
         this.flashCardArrayList = new ArrayList<FlashCard>();
-        this.flashCardArrayList.add(new FlashCard());
-        this.pokemonArrayList = new ArrayList<Pokemon>();
+        flashCardArrayList.add(new FlashCard());
+        this.notesCreated = 0;
     }
-
-    //method to create a new game
 
     public UUID getUuid() {
         return uuid;
@@ -48,24 +46,25 @@ public class Profile {
         this.flashCardArrayList = flashCardArrayList;
     }
 
-    public ArrayList<Pokemon> getPokemonArrayList() {
-        return pokemonArrayList;
+    public int getNotesCreated() {
+        return notesCreated;
     }
 
-    public void setPokemonArrayList(ArrayList<Pokemon> pokemonArrayList) {
-        this.pokemonArrayList = pokemonArrayList;
+    public void setNotesCreated(int notesCreated) {
+        this.notesCreated = notesCreated;
     }
 
-    public Pokemon findPokemon(List<Pokemon> pokemonList, String search) {
-        int searchNumber = Integer.parseInt(search);
-        for(Pokemon pokemon : pokemonList) {
-            if(pokemon.getName().equals(search)) {
-                return pokemon;
-            } else if(pokemon.getId() == searchNumber) {
-                return pokemon;
+    public ArrayList<FlashCard> findFlashCards(ArrayList<FlashCard> flashCardsInput, String search) {
+        ArrayList<FlashCard> flashCardOutput = new ArrayList<FlashCard>();
+        flashCardOutput.add(this.flashCardArrayList.get(0));
+        for(FlashCard flashCard : flashCardsInput) {
+            if(flashCard.getPokemon().getName().equals(search)) {
+                flashCardOutput.add(flashCard);
             }
         }
-        return null;
+        return flashCardOutput;
     }
+
+
 
 }

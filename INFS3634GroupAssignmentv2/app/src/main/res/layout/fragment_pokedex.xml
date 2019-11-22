@@ -3,12 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.PokedexFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="131dp"
+        android:layout_gravity="top">
+
+        <ImageView
+            android:id="@+id/pokedexFragmentImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/pokedex"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/pokedexFragmentBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/pokedexFragmentImage"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/startPokedexButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top" />
+        android:layout_height="75dp"
+        android:text="Open Pokedex"
+        android:textSize="24dp"
+        android:textColor="#FFFFFF"
+        android:background="#00BFFF"
+        tools:background="#00BFFF"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="56dp"/>
 
 </FrameLayout>

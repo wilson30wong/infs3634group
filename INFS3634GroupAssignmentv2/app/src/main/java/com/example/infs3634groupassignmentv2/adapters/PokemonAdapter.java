@@ -42,7 +42,9 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         } else{
             name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
             holder.pokemonName.setText(name);
-            Glide.with(context).load(pokemonObject.getSprites().getFront_default()).into(holder.pokemonImage);
+            if(pokemonObject.checkIfSpeciesExists()){
+                Glide.with(context).load(pokemonObject.getSprites().getFront_default()).into(holder.pokemonImage);
+            }
         }
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +73,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
             super(v);
             view = v;
             pokemonName = v.findViewById(R.id.pokemonName);
-//            pokemonImage = v.findViewById(R.id.pokemonImage);
+            pokemonImage = v.findViewById(R.id.pokemonImage);
         }
     }
 }

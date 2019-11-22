@@ -16,12 +16,12 @@
 
         <TextView
             android:id="@+id/pokemonName1"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Pokemon Name"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:layout_marginStart="16dp"
+            android:gravity="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -30,7 +30,10 @@
             android:id="@+id/pokemonImage1"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:layout_margin="12.5dp"
+            android:layout_marginTop="12.5dp"
+            android:layout_marginBottom="12.5dp"
+            android:layout_marginStart="12.5dp"
+            android:layout_marginEnd="62.5dp"
             tools:srcCompat="@tools:sample/avatars"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -45,17 +48,23 @@
 
         <Button
             android:id="@+id/infoButton"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
+            android:text="Information"
+            android:background="#B0E0E6"
+            tools:background="#B0E0E6"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <Button
             android:id="@+id/flashCardButton"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="@id/infoButton"
-            app:layout_constraintStart_toEndOf="@id/infoButton"/>
+            android:text="Flash Cards"
+            android:background="#87CEFA"
+            tools:background="#87CEFA"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

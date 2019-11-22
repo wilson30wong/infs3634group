@@ -35,7 +35,7 @@ dependencies {
     //dependency for gson
     implementation 'com.google.code.gson:gson:2.8.6'
     //dependency for volley
-    implementation 'com.android.volley:volley:1.1.0'
+    implementation 'com.android.volley:volley:1.1.1'
     //dependency for the recyclerView
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     //dependency for glide

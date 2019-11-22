@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "328c8d0452f77c3dbd58005503634193",
+    "identityHash": "f088bdfc653b54e5cc28f817af748347",
     "entities": [
       {
         "tableName": "Pokemon",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT, `height` INTEGER NOT NULL, `weight` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `url` TEXT, `front_default` TEXT, `height` INTEGER NOT NULL, `weight` INTEGER NOT NULL, PRIMARY KEY(`name`), FOREIGN KEY(`front_default`) REFERENCES `PokemonSprites`(`front_default`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -17,6 +17,18 @@
           {
             "fieldPath": "name",
             "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "front_default",
+            "columnName": "front_default",
             "affinity": "TEXT",
             "notNull": false
           },
@@ -35,7 +47,97 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "PokemonSprites",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "front_default"
+            ],
+            "referencedColumns": [
+              "front_default"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "PokemonSprites",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`front_default` TEXT NOT NULL, PRIMARY KEY(`front_default`))",
+        "fields": [
+          {
+            "fieldPath": "front_default",
+            "columnName": "front_default",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "front_default"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PokemonSpecies",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`shapeName` TEXT, `name` TEXT NOT NULL, PRIMARY KEY(`name`), FOREIGN KEY(`shapeName`) REFERENCES `Shape`(`name`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "shapeName",
+            "columnName": "shapeName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": [
+          {
+            "table": "Shape",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "shapeName"
+            ],
+            "referencedColumns": [
+              "name"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Shape",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, PRIMARY KEY(`name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "name"
           ],
           "autoGenerate": false
         },
@@ -46,7 +148,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '328c8d0452f77c3dbd58005503634193')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f088bdfc653b54e5cc28f817af748347')"
     ]
   }
 }

@@ -1,6 +1,7 @@
 package com.example.infs3634groupassignmentv2.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -14,12 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.infs3634groupassignmentv2.R;
+import com.example.infs3634groupassignmentv2.activities.GameActivity;
+import com.example.infs3634groupassignmentv2.activities.PokedexActivity;
 
 
 public class HomeFragment extends Fragment {
 
     ConstraintLayout homeGameSlot;
-    ConstraintLayout homeSearchSlot;
+    ConstraintLayout homePokedexSlot;
 
     public HomeFragment() {
     }
@@ -31,7 +34,7 @@ public class HomeFragment extends Fragment {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_home, container, false);
 
         homeGameSlot = frameLayout.findViewById(R.id.homeGameSlot);
-        homeSearchSlot = frameLayout.findViewById(R.id.homePokedexSlot);
+        homePokedexSlot = frameLayout.findViewById(R.id.homePokedexSlot);
 
         populateHomeSlot(homeGameSlot,
                 "Game",
@@ -41,18 +44,21 @@ public class HomeFragment extends Fragment {
         homeGameSlot.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Intent intent = new Intent(getContext(), GameActivity.class);
+                startActivity(intent);
             }
         });
 
-        populateHomeSlot(homeSearchSlot,
+        populateHomeSlot(homePokedexSlot,
                 "Pokedex",
                 R.drawable.pokedex,
                 "Search through the pokedex for pokemon.");
 
-        homeSearchSlot.setOnClickListener(new View.OnClickListener(){
+        homePokedexSlot.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
+                Intent intent = new Intent(getContext(), PokedexActivity.class);
+                startActivity(intent);
             }
         });
 

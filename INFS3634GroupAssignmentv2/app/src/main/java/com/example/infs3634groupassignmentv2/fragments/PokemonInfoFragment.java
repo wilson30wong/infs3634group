@@ -26,7 +26,7 @@ import com.google.gson.Gson;
 
 public class PokemonInfoFragment extends Fragment {
 
-    Pokemon pokemonObject;
+    public static Pokemon pokemonObject;
     TextView pokemonHeight;
     TextView pokemonWeight;
     TextView pokemonFlavorText;
@@ -48,6 +48,7 @@ public class PokemonInfoFragment extends Fragment {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_pokemon_info, container, false);
 
         pokemonObject = ((PokemonActivity)getActivity()).getPokemonObject();
+
 
         pokemonHeight = frameLayout.findViewById(R.id.pokemonHeight);
         pokemonWeight = frameLayout.findViewById(R.id.pokemonWeight);

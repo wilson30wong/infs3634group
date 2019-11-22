@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,6 +19,7 @@ public class QuizInProgressActivity extends AppCompatActivity {
 
     TextView quizHeader;
     TextView quizHeader1;
+    TextView quizCorrectAnswers;
     Button quizOptionA;
     Button quizOptionB;
     Button quizOptionC;
@@ -29,7 +31,7 @@ public class QuizInProgressActivity extends AppCompatActivity {
     int selectedGym;
     int quizProgress = 0;
     int correctAnswers = 0;
-    public static boolean progress;
+    boolean progress;
     Gym gym;
     Quiz quiz;
 
@@ -40,6 +42,7 @@ public class QuizInProgressActivity extends AppCompatActivity {
 
         quizHeader = findViewById(R.id.quizHeader);
         quizHeader1 = findViewById(R.id.quizHeader1);
+        quizCorrectAnswers = findViewById(R.id.quizCorrectAnswers);
         quizOptionA = findViewById(R.id.quizOptionA);
         quizOptionB = findViewById(R.id.quizOptionB);
         quizOptionC = findViewById(R.id.quizOptionC);
@@ -65,6 +68,7 @@ public class QuizInProgressActivity extends AppCompatActivity {
         if(MainActivity.profile.getGame().getGameProgress() == selectedGym){
             if(MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getGymProgress() == selectedQuiz){
                 progress = true;
+                System.out.println(progress + " this is a progressable gym");
             }
         }
 
@@ -76,7 +80,8 @@ public class QuizInProgressActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(nextQuestion1.getText().equals("Finish the Quiz")){
-                    Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                    System.out.println(progress + " is the progress");
                     if(correctAnswers == 5 & progress == true){
                         int newProgress = MainActivity.profile.getGame().getGymArrayList().get(selectedGym).getGymProgress() + 1;
                         MainActivity.profile.getGame().getGymArrayList().get(selectedGym).setGymProgress(newProgress);
@@ -85,7 +90,8 @@ public class QuizInProgressActivity extends AppCompatActivity {
                             MainActivity.profile.getGame().setGameProgress(newProgress1);
                         }
                     }
-                    startActivity(intent1);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 } else{
                     quizProgress++;
                     quizOptionA.setEnabled(true);
@@ -102,7 +108,7 @@ public class QuizInProgressActivity extends AppCompatActivity {
     }
 
     private void populatePage(){
-        String quizHeaderText = gym.getName() + "\nStage " + selectedQuiz + 1;
+        String quizHeaderText = gym.getName() + "\nTrainer " + (selectedQuiz + 1);
         quizHeader.setText(quizHeaderText);
         String quizHeader1Text = "Question " + (quizProgress + 1) + "\n" + quiz.getQuestionArrayList().get(quizProgress).getQuestion();
         quizHeader1.setText(quizHeader1Text);
@@ -160,7 +166,13 @@ public class QuizInProgressActivity extends AppCompatActivity {
                 quizOptionD.setEnabled(false);
                 if(quizProgress == 4){
                     nextQuestion1.setText("Finish the Quiz");
+                    if(correctAnswers == 5){
+                        Toast.makeText(getApplicationContext(), "You Have Completed The Quiz", Toast.LENGTH_LONG).show();
+                    } else{
+                        Toast.makeText(getApplicationContext(), "You Have Failed The Quiz", Toast.LENGTH_LONG).show();
+                    }
                 }
+                quizCorrectAnswers.setText(correctAnswers + "/5");
             }
         });
 
@@ -182,7 +194,13 @@ public class QuizInProgressActivity extends AppCompatActivity {
                 quizOptionD.setEnabled(false);
                 if(quizProgress == 4){
                     nextQuestion1.setText("Finish the Quiz");
+                    if(correctAnswers == 5){
+                        Toast.makeText(getApplicationContext(), "You Have Completed The Quiz", Toast.LENGTH_LONG).show();
+                    } else{
+                        Toast.makeText(getApplicationContext(), "You Have Failed The Quiz", Toast.LENGTH_LONG).show();
+                    }
                 }
+                quizCorrectAnswers.setText(correctAnswers + "/5");
             }
         });
 
@@ -204,7 +222,13 @@ public class QuizInProgressActivity extends AppCompatActivity {
                 quizOptionD.setEnabled(false);
                 if(quizProgress == 4){
                     nextQuestion1.setText("Finish the Quiz");
+                    if(correctAnswers == 5){
+                        Toast.makeText(getApplicationContext(), "You Have Completed The Quiz", Toast.LENGTH_LONG).show();
+                    } else{
+                        Toast.makeText(getApplicationContext(), "You Have Failed The Quiz", Toast.LENGTH_LONG).show();
+                    }
                 }
+                quizCorrectAnswers.setText(correctAnswers + "/5");
             }
         });
 
@@ -226,8 +250,13 @@ public class QuizInProgressActivity extends AppCompatActivity {
                 quizOptionD.setEnabled(false);
                 if(quizProgress == 4){
                     nextQuestion1.setText("Finish the Quiz");
-
+                    if(correctAnswers == 5){
+                        Toast.makeText(getApplicationContext(), "You Have Completed The Quiz", Toast.LENGTH_LONG).show();
+                    } else{
+                        Toast.makeText(getApplicationContext(), "You Have Failed The Quiz", Toast.LENGTH_LONG).show();
+                    }
                 }
+                quizCorrectAnswers.setText(correctAnswers + "/5");
             }
         });
     }

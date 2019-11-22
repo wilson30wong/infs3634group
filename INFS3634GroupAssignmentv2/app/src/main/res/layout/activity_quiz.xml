@@ -11,20 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/startQuizButton1"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_quizPokemon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:layout_marginTop="75dp"
+            android:layout_marginBottom="75dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/startQuizButton1"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:text="Start Quiz"
+            android:textSize="24dp"
+            android:textColor="#FFFFFF"
+            android:background="#00BFFF"
+            tools:background="#00BFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

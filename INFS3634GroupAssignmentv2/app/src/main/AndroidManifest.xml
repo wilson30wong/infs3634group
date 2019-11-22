@@ -22,6 +22,7 @@
         <activity android:name=".activities.PokedexActivity"/>
         <activity android:name=".activities.PokemonActivity"/>
         <activity android:name=".activities.FlashCardActivity"/>
+        <activity android:name=".activities.QuizSplashscreenActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Gym {
 
     private String name;
+    private int badge;
     private ArrayList<Quiz> quizArrayList;
     private int gymProgress;
 
-    public Gym(String name){
+    public Gym(String name, int badge){
         this.name = name;
+        this.badge = badge;
         this.gymProgress = 0;
         this.quizArrayList = new ArrayList<Quiz>();
         this.quizArrayList.add(new Quiz());
@@ -25,6 +27,14 @@ public class Gym {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getBadge() {
+        return badge;
+    }
+
+    public void setBadge(int badge) {
+        this.badge = badge;
     }
 
     public ArrayList<Quiz> getQuizArrayList() {

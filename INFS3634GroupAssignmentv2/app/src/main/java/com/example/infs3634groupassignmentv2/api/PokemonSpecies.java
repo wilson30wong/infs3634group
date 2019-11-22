@@ -1,7 +1,15 @@
 package com.example.infs3634groupassignmentv2.api;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.List;
+
 
 public class PokemonSpecies implements Serializable {
 

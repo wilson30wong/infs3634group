@@ -15,7 +15,9 @@ import android.widget.FrameLayout;
 import com.android.volley.RequestQueue;
 import com.example.infs3634groupassignmentv2.MainActivity;
 import com.example.infs3634groupassignmentv2.R;
+import com.example.infs3634groupassignmentv2.activities.PokemonActivity;
 import com.example.infs3634groupassignmentv2.adapters.FlashCardAdapter;
+import com.example.infs3634groupassignmentv2.api.Pokemon;
 import com.example.infs3634groupassignmentv2.model.FlashCard;
 
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class PokemonFlashCardsFragment extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<FlashCard> flashCardArrayList;
+
 
     public PokemonFlashCardsFragment() {
 
@@ -35,7 +38,7 @@ public class PokemonFlashCardsFragment extends Fragment {
                              Bundle savedInstanceState) {
         FrameLayout frameLayout = (FrameLayout) inflater.inflate(R.layout.fragment_pokemon_flash_cards, container, false);
 
-        flashCardArrayList = MainActivity.profile.getFlashCardArrayList();
+        flashCardArrayList = MainActivity.profile.findFlashCards(MainActivity.profile.getFlashCardArrayList(),((PokemonActivity)getActivity()).getPokemonObject().getName());
 
         recyclerView = frameLayout.findViewById(R.id.rv_pokemonFlashCards);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL,false );
@@ -48,12 +51,16 @@ public class PokemonFlashCardsFragment extends Fragment {
         return frameLayout;
     }
 
+
     @Override
-    public void onResume(){
-        super.onResume();
+    public void onStart(){
+        super.onStart();
+        flashCardArrayList = MainActivity.profile.findFlashCards(MainActivity.profile.getFlashCardArrayList(),((PokemonActivity)getActivity()).getPokemonObject().getName());
+        System.out.println(flashCardArrayList.size());
         FlashCardAdapter flashCardAdapter = new FlashCardAdapter();
         flashCardAdapter.setData(flashCardArrayList);
         recyclerView.setAdapter(flashCardAdapter);
     }
+
 
 }
